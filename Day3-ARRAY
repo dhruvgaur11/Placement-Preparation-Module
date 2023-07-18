@@ -1,0 +1,61 @@
+Q-1 SEARCH A 2D MATRIX
+ANS-bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int row=matrix.size();
+        int col=matrix[0].size();
+
+        int start=0;
+        int end=row*col-1;
+
+       int mid=start+(end-start)/2;
+        while(start<=end)
+        {
+            int element=matrix[mid/col][mid%col];
+            if(element==target)
+            {
+                return 1;
+            }
+            else if(element<target)
+            {
+                start=mid+1;
+            }
+            else
+            end=mid-1;
+            mid=start+(end-start)/2;
+        }
+    return 0;
+    }
+
+Q-2 Pow(x, n)
+ANS-
+double power(double x, int n){
+        if(n==0){
+            return 1;
+        }
+        return x * power(x, n-1);
+    }
+public:
+    double myPow(double x, int n) {
+        if (n == INT_MAX) return (x == 1) ? 1 : (x == -1) ? -1 : 0;
+        if (n == INT_MIN) return (x == 1 || x == -1) ? 1 : 0;
+        double num = 1;
+        if(n>=0){
+            num = power(x, n);
+        }
+        else{
+            n = -n;
+            num = power(x, n);
+            num = 1.0/num;
+        }
+        return num;
+    }
+
+
+Q-3 MAJORITY ELEMENT
+ANS-
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());  // Sort the vector in non-decreasing order
+        return nums[nums.size() / 2];  // Return the element at the middle index
+    }
+};
